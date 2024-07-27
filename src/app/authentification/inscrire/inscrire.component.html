@@ -1,0 +1,71 @@
+<section class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <!-- registration container -->
+    <div class="bg-white flex rounded-2xl shadow-lg max-w-3xl p-5 items-center mt-8">
+        <!-- form -->
+        <div class="md:w-1/2 px-8">
+            <h2 class="font-bold text-2xl text-[#002D74]">Register</h2>
+            <p class="text-sm mt-2 text-[#002D74]">Create your account</p>
+
+            <form #myform="ngForm" class="flex flex-col gap-4">
+                <input type="text" placeholder="Username" name="username" required [(ngModel)]="user.username" #username="ngModel" class="p-3 mt-6 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="username.touched && !username.valid">
+                    <div *ngIf="username.hasError('required')">Veuillez saisir votre nom d'utilisateur.</div>
+                </div>
+
+                <input type="email" placeholder="Email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" [(ngModel)]="user.email" #email="ngModel" class="p-3 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="email.touched && !email.valid">
+                    <div *ngIf="email.hasError('required')">Veuillez saisir votre email.</div>
+                    <div *ngIf="email.errors && email.hasError('pattern')">Veuillez saisir un email valide.</div>
+                </div>
+
+                <input type="text" placeholder="Department" name="department" required [(ngModel)]="user.department" #department="ngModel" class="p-3 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="department.touched && !department.valid">
+                    <div *ngIf="department.hasError('required')">Veuillez saisir votre département.</div>
+                </div>
+
+                <input type="text" placeholder="Position" name="position" required [(ngModel)]="user.position" #position="ngModel" class="p-3 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="position.touched && !position.valid">
+                    <div *ngIf="position.hasError('required')">Veuillez saisir votre poste.</div>
+                </div>
+
+                <input type="date" placeholder="Start Date" name="startDate" required [(ngModel)]="user.startDate" #startDate="ngModel" class="p-3 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="startDate.touched && !startDate.valid">
+                    <div *ngIf="startDate.hasError('required')">Veuillez saisir votre date de début.</div>
+                </div>
+
+                <input type="text" placeholder="Phone Number" name="phoneNumber" required [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel" class="p-3 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="phoneNumber.touched && !phoneNumber.valid">
+                    <div *ngIf="phoneNumber.hasError('required')">Veuillez saisir votre numéro de téléphone.</div>
+                </div>
+
+                <input type="text" placeholder="Address" name="address" required [(ngModel)]="user.address" #address="ngModel" class="p-3 rounded-lg border border-gray-300" />
+                <div class="text-red-500 text-sm" *ngIf="address.touched && !address.valid">
+                    <div *ngIf="address.hasError('required')">Veuillez saisir votre adresse.</div>
+                </div>
+
+                <div class="relative">
+                    <input type="password" placeholder="Password" name="password" required minlength="8" [(ngModel)]="user.password" #password="ngModel" class="p-3 rounded-lg border border-gray-300 w-full" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                    </svg>
+                    <div class="text-red-500 text-sm mt-1" *ngIf="password.touched && !password.valid">
+                        <div *ngIf="password.hasError('required')">Veuillez saisir votre mot de passe.</div>
+                        <div *ngIf="password.hasError('minlength')">Le mot de passe doit comporter au moins 8 caractères.</div>
+                    </div>
+                </div>
+
+                <button class="bg-[#002D74] rounded-lg text-white py-2 hover:scale-105 transition-transform duration-300" [disabled]="myform.invalid">Register</button>
+            </form>
+
+            <div class="mt-4 text-xs border-b border-[#002D74] py-2 text-[#002D74]">
+                <a routerLink="../">Already have an account?</a>
+            </div>
+        </div>
+
+        <!-- image -->
+        <div class="md:block hidden md:w-1/2">
+            <img class="rounded-2xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAetIp1yH7gKvqmkyQpn5QiITCC-UGkd9ibjPXj_yXJBaTBJxcbKuxmyH8XpQOQ8IPFKc&usqp=CAU">
+        </div>
+    </div>
+</section>
